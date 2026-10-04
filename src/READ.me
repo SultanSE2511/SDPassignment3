@@ -1,0 +1,26 @@
+Bridge Pattern Game Character  Weapon System
+
+This repository contains an implementation of the Bridge Design Pattern in Java as part of Assignment #3 for the *Software Design Patterns* course.
+
+Topic Overview
+The application models a combat system in a game where Characters (Abstractions) use various Weapons (Implementations) to perform attacks.
+
+By applying the Bridge pattern, the `Character` hierarchy and the `Weapon` hierarchy are completely decoupled, allowing them to evolve independently without a explosion of subclasses (e.g., avoiding classes like `WarriorWithSword`, `MageWithBow`, etc.).
+
+
+Architecture & Bridge Components
+
+Implementor** | `Weapon` | Interface declaring low-level operation (`applyDamage`).
+Concrete Implementors| `Sword`, `Bow` | Specific implementations of the weapon mechanics.
+Abstraction** | `Character` | Abstract class holding a reference to `Weapon`.
+Refined Abstractions | `Warrior`, `Mage` | High-level character classes extending the abstraction.
+Client | `Main` | Demonstrates composition and runtime weapon switching.
+
+
+Clean Code Principles Applied
+
+1. Separation of Responsibilities: High-level character logic (`attack`) is separated from low-level weapon mechanics (`applyDamage`).
+2. Open/Closed Principle (OCP): New weapons (e.g., `MagicStaff`) or new characters (e.g., `Rogue`) can be added without modifying existing code.
+3. Single Responsibility Principle (SRP): Each class focuses on a single task (`Character` handles character attributes, `Weapon` handles damage dealing).
+4. Meaningful Names: Names clearly reflect domain concepts and design roles (`Warrior`, `Bow`, `applyDamage`).
+5. Decoupled / Runtime Flexibility: The client can dynamically change a character's weapon at runtime via `setWeapon()`.
